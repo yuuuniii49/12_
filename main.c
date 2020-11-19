@@ -6,10 +6,10 @@
 
 int main(int argc, char *argv[]) {
 	FILE *fp;
-	char str[80];
+	char c;
 	int i;
 	
-	fp = fopen("sample.txt", "w");
+	fp = fopen("sample.txt", "r");
 	if (fp == NULL) {
 		printf("파일을 열지 못했습니다.\n");
 		return 1;
@@ -18,12 +18,11 @@ int main(int argc, char *argv[]) {
 		printf("파일 열기에 성공하였습니다.\n");
 	}
 	
-	for (i=0; i<3; i++) {
-		printf("input a word : ");
-		scanf("%s", str);
-		fprintf(fp, "%s\n", str);
-	}
+	while ((c=fgetc(fp)) != EOF) {
+		putchar(c);
+	}	
 	
 	fclose(fp);
+	
 	return 0;
 }
